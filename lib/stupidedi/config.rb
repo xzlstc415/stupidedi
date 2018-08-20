@@ -116,6 +116,7 @@ module Stupidedi
           x.register("005010X222A1", "HC", "837") { Stupidedi::Guides::FiftyTen::X222A1::HC837P }
           x.register("005010X223A1", "HC", "837") { Stupidedi::Guides::FiftyTen::X223A1::HC837I }
           x.register("005010X231A1", "FA", "999") { Stupidedi::Guides::FiftyTen::X231A1::FA999  }
+          x.register("005010X222A2", "HC", "837") { Stupidedi::Guides::FiftyTen::X222A2::HC837P }
           x.register("005010X223A2", "HC", "837") { Stupidedi::Guides::FiftyTen::X223A2::HC837I }
           x.register("005010X223A3", "HC", "837") { Stupidedi::Guides::FiftyTen::X223A3::HC837I }
         end
