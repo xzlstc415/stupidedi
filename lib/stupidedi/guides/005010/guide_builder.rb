@@ -73,7 +73,7 @@ module Stupidedi
           unless elements.length == segment_def.element_uses.length
             raise Exceptions::InvalidSchemaError,
               "segment #{segment_def.id} has #{segment_def.element_uses.length}" +
-              " elements but #{elements.length} arguments were specified"
+              " elements but #{elements.length} arguments were given"
           end
 
           element_index = "00"
@@ -110,8 +110,8 @@ module Stupidedi
 
                 # ComponentElementUses
                 component_index = "00"
-                component_uses  = e_arguments.zip(u.definition.component_uses).map do |e, c|
-                  c_tag, c_requirement, c_name, c_arguments = e
+                component_uses  = e_arguments.zip(u.definition.component_uses).map do |e1, c|
+                  c_tag, c_requirement, c_name, c_arguments = e1
                   # component_index.succ!
                   component_index = component_index.succ
 

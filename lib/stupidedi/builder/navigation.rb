@@ -453,7 +453,7 @@ module Stupidedi
       # @return       [Either<Array<Object>>]
       def iterate(id, *elements)
         a = []
-        m = find(id, *elements)
+        m = __find(false, id, elements, true)
         return m unless m.defined?
 
         while m.defined?
@@ -485,9 +485,10 @@ module Stupidedi
     private
 
       # @return [Either<StateMachine>]
-      def __find(invalid, id, elements)
-        reachable = false
-        matches   = []
+      def __find(invalid, id, elements, assert_repeatable = false)
+        reachable   = false
+        repeatable  = false
+        matches     = []
 
         @active.each do |zipper|
           matched      = false
@@ -525,6 +526,7 @@ module Stupidedi
             #    nodes to move left, but not exactly how many. Instead, we
             #    know what the InstructionTable is when we get there.
             target = zipper.node.instructions.pop(op_.pop_count).drop(op_.drop_count)
+            repeatable ||= target.matches(filter_tok, true).present?
 
             # 3. If the segment we're searching for belongs in a new subtree,
             #    but it's not the only segment that might have "opened" that
@@ -623,6 +625,11 @@ module Stupidedi
               end
             end
           end
+        end
+
+        if assert_repeatable and not repeatable
+          raise Exceptions::ParseError,
+            "#{id} segment is not repeatable"
         end
 
         if not reachable

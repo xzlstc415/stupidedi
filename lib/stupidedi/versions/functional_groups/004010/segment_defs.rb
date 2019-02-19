@@ -37,6 +37,9 @@ module Stupidedi
           autoload :BEG,
             "stupidedi/versions/functional_groups/004010/segment_defs/BEG"
 
+          autoload :BAK,
+            "stupidedi/versions/functional_groups/004010/segment_defs/BAK"
+
           autoload :BPR,
             "stupidedi/versions/functional_groups/004010/segment_defs/BPR"
 
@@ -201,6 +204,9 @@ module Stupidedi
           autoload :PER,
             "stupidedi/versions/functional_groups/004010/segment_defs/PER"
 
+          autoload :PRF,
+            "stupidedi/versions/functional_groups/004010/segment_defs/PRF"
+
           autoload :PID,
             "stupidedi/versions/functional_groups/004010/segment_defs/PID"
 
@@ -233,6 +239,9 @@ module Stupidedi
 
           autoload :TD3,
             "stupidedi/versions/functional_groups/004010/segment_defs/TD3"
+
+          autoload :TD4,
+            "stupidedi/versions/functional_groups/004010/segment_defs/TD4"
 
           autoload :TRN,
             "stupidedi/versions/functional_groups/004010/segment_defs/TRN"

@@ -76,7 +76,7 @@ module Stupidedi
                   end
                 end
 
-                ansi.element("TM.invalid#{id}") << "(#{ansi.invalid(@value.inspect)})"
+                ansi.element("TM.invalid#{id}") + "(#{ansi.invalid(@value.inspect)})"
               end
 
               # @return [String]
@@ -226,7 +226,7 @@ module Stupidedi
                 mm = @minute.try{|m| "%02d" % m }  || "mm"
                 ss = @second.try{|s| s.to_s("F") } || "ss"
 
-                ansi.element("TM.value#{id}") << "(#{hh}:#{mm}:#{ss})"
+                ansi.element("TM.value#{id}") + "(#{hh}:#{mm}:#{ss})"
               end
 
               # @return [String]
@@ -291,6 +291,7 @@ module Stupidedi
                 second = object.to_s.slice(4, 2).try{|ss| ss.to_d unless ss.blank? }
 
                 if decimal = object.to_s.slice(6..-1)
+                  decimal = 0 if decimal.empty?
                   second += "0.#{decimal}".to_d
                 end
 
